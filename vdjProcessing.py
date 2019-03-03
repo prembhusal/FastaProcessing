@@ -21,3 +21,8 @@ def getVJid():
 	data["J_CALL"] = data.groupby("J_CALL").ngroup()
 
 	print data["V_CALL"]
+	
+def main():
+	getVJid()
+if __name__ == '__main__':
+	main()
