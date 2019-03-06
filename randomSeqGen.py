@@ -1,3 +1,4 @@
+import random
 def randomGen():
 	l = ["A","C","T","G"]
 	for i in range(64000):
@@ -7,3 +8,5 @@ def randomGen():
 			string += l[0]
 		print ">seq"+str(i)
 		print string
+
+randomGen()
