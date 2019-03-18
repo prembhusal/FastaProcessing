@@ -22,6 +22,29 @@ def getVJid():
 
 	print data["V_CALL"]
 	
+
+def sampleGroups():
+	#data = getVJid()
+	data = pd.read_csv(infile,sep="\t")
+	#print data["V_CALL"]
+	size = int(sys.argv[2])
+	#sample from the data for given size
+	n = 10
+	biggestG = []
+	#sample n times;
+	for i in range(n):
+
+		sampledf = data.sample(n=size,replace=False)
+		#mytable = data.groupby(["V-GENE and allele","J-GENE and allele","JUNCTION-nt nb"]).size().reset_index()
+		mytable = sampledf.groupby(["V_CALL","J_CALL","JUNCTION_LENGTH"]).size().reset_index() # unique combination of col-10,col-11 , col-13
+		listTable = list(zip(*[mytable[c].values.tolist() for c in mytable]))
+		sortedL =  sorted(listTable, key= lambda x:x[3], reverse=True) # sort the list based on group count
+		biggestG.append(int(sortedL[0][3]))
+
+	#print "tota groups :", len(sortedL)
+	print "biggest group: ",biggestG
+	print "mean:", np.mean(biggestG)
+	print "std :", np.std(biggestG)
 def main():
 	getVJid()
 if __name__ == '__main__':
