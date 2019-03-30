@@ -45,6 +45,24 @@ def sampleGroups():
 	print "biggest group: ",biggestG
 	print "mean:", np.mean(biggestG)
 	print "std :", np.std(biggestG)
+	
+def getBigMysthesia():
+	#get the biggest group for mysthesiaHeavyChain HD(4 subtype)
+	data = pd.read_csv(infile,sep="\t")
+
+	# #keep only the first value from v and j column
+	data["V_CALL"] = data["V_CALL"].str.split(",").str[0]
+	data["J_CALL"] = data["J_CALL"].str.split(",").str[0]
+
+	#select the data having subject = HD (around 50k data)
+	data = data.loc[data['STATUS'] == 'HD'] 
+
+	# find biggest group size:
+	mytable = data.groupby(["V_CALL","J_CALL","JUNCTION_LENGTH"]).size().reset_index() # unique combination of col-10,col-11 , col-13
+	listTable = list(zip(*[mytable[c].values.tolist() for c in mytable]))
+	sortedL =  sorted(listTable, key= lambda x:x[3], reverse=True) # sort the list based on group count
+	print "biggest",sortedL[0][3]
+
 def main():
 	getVJid()
 if __name__ == '__main__':
