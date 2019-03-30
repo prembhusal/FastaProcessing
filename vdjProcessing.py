@@ -65,5 +65,6 @@ def getBigMysthesia():
 
 def main():
 	getVJid()
+	getBigMysthesia()
 if __name__ == '__main__':
 	main()
