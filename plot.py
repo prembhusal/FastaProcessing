@@ -1,5 +1,11 @@
+
 from matplotlib import pyplot as plt
-#plot the output for localMst vs SparkMst
+import numpy as np
+#plot the output for localMst vs SparkMst to find cross point
+
+def mul(x):
+	l = [item * 1000 for item in x]
+	return l
 
 x = [2,4,8,16,32,64]
 local = [1,2,6,21,79,302]
