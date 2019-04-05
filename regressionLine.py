@@ -10,7 +10,7 @@ y = [1452,2690,1123,8791]
 #plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)), color = "green", linestyle="--")
 p1 =np.polyfit(x,y,1)
 x_extended = np.linspace(20, 2000, 100) # for making extended line beyond exact values
-plt.plot(x_extended,np.polyval(p1,x_extended),'r-', linestyle="--")
+plt.plot(x_extended,np.polyval(p1,x_extended),'r-', linestyle="--") #plots the regression line.
 plt.scatter(147,1452,color = "red",label ='D4')
 plt.scatter(164,2690,color='orange',label='D1')
 plt.scatter(169,1123,color = "blue",label='D2')
