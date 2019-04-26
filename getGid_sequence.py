@@ -23,3 +23,14 @@ def getGroupIdSequence():
 
 
 
+def getGroupIdSequence2():
+	data = pd.read_csv(infile,sep='\t')
+	print data["Index"]
+	data["Sequence"] = data["Index"].astype(str)+","+data["ID"].astype(str)+","+data["JUNCTION"].astype(str)
+	data["groupId"] = data.groupby(["V_CALL","J_CALL","JUNCTION_LENGTH"]).grouper.group_info[0]
+
+	data1 = data[["groupId","Sequence"]]
+	data1.to_csv(outfile+".tsv", sep='\t',index=False)
+
+
+getGroupIdSequence2()
