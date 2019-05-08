@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import re
-#import Levenshtein
+import Levenshtein
 from itertools import chain, combinations
 from scipy.cluster.hierarchy import dendrogram, linkage,fcluster,fclusterdata
 import time
@@ -122,7 +122,7 @@ def withDistMatrix(InputFile):
 	print labelsOptimal
 
 t1 = time.time()
-#getSquareForm(infile)
+getSquareForm(infile)
 withDistMatrix(infile)
 t2 = time.time()
 
