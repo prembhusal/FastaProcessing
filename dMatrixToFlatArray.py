@@ -34,8 +34,9 @@ def withDistMatrix(InputFile):
 	mask = r[:,None] < r
 	distArr = my_array[mask]
   
-  
-  distArray = ssd.squareform(my_array)
+  	#convert distanceMatrix(my_array) to flat array of upper triangular matrix
+	#use scipy square form
+  	distArray = ssd.squareform(my_array)
 	print "from masking: "
 	print distArr
 
